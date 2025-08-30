@@ -1,0 +1,39 @@
+import { Button, VerticalBox, HorizontalBox, TextEdit } from "std-widgets.slint";
+
+export component AppWindow inherits Window {
+    width: 800px;
+    height: 600px;
+    title: "Word-like App";
+
+    VerticalBox {
+        // Horizontal menu bar with background
+        Rectangle {
+            background: #f0f0f0;
+            HorizontalBox {
+                padding: 5px;
+                Button {
+                    text: "File";
+                    clicked => { root.file-clicked() }
+                }
+                Button {
+                    text: "Edit";
+                    clicked => { root.edit-clicked() }
+                }
+                Button {
+                    text: "Format";
+                    clicked => { root.format-clicked() }
+                }
+            }
+        }
+        // Text editing area
+        TextEdit {
+            text: "Start typing your document here...";
+            font-size: 14px;
+            wrap: word-wrap;
+        }
+    }
+
+    callback file-clicked();
+    callback edit-clicked();
+    callback format-clicked();
+}
